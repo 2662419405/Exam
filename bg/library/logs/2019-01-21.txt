@@ -1,0 +1,51 @@
+Time : 16:36:30
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1548084990,exam_name) VALUE ( 1,?,?,?,?,?,?,?,?,?)' at line 1
+Raw SQL : insert into exam_problem ( pro_type , chinese ,content ,xuanze_A,xuanze_B,xuanze_C,xuanze_D,answer,resolve,1548084990,exam_name) VALUE ( 1,:chinese,:content,:xuanze_A,:xuanze_B,:xuanze_C,:xuanze_D,:answer,:resolve,:exam_name)
+
+Time : 16:31:17
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 16:28:54
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 16:27:06
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 16:26:58
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 16:26:24
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 16:25:56
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 13:27:11
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 09:53:06
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 09:52:39
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 09:52:00
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 09:51:34
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 09:50:34
+SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty
+
+Time : 09:22:49
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ': zhunaye,content = ?,xuanze_A = ?,xuanze_B = ?,xuanze_C = ?,xuanze_D = ?,answer' at line 1
+Raw SQL : update exam_problem set chinese = : zhunaye,content = :content,xuanze_A = :xuanze_A,xuanze_B = :xuanze_B,xuanze_C = :xuanze_C,xuanze_D = :xuanze_D,answer = :answer,resolve = :resolve,exam_name = :exam_name where id = :id
+
+Time : 09:22:11
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ': zhunaye,content = ?,xuanze_A = ?,xuanze_B = ?,xuanze_C = ?,xuanze_D = ?,answer' at line 1
+Raw SQL : update exam_problem set chinese = : zhunaye,content = :content,xuanze_A = :xuanze_A,xuanze_B = :xuanze_B,xuanze_C = :xuanze_C,xuanze_D = :xuanze_D,answer = :answer,resolve = :resolve,exam_name = :exam_name where id = :id
+
+Time : 09:08:28
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'exam.exam_porblem' doesn't exist
+Raw SQL : select * from exam_porblem where id = :id

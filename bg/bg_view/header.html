@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>学霸管理后台</title>
+		<link rel="shortcut icon" type="text/css" href="../ico/2.ico" />
+		<style type="text/css">
+			/*
+			 * 主页面CSS样式
+			 */
+			
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			@font-face {
+				font-family: timu;
+				src: url(../font/HYTangMeiRenW.ttf);
+			}
+			
+			body {
+				height: 100%;
+				font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+				background-color: #2f4050;
+				font-size: 14px;
+				color: #676a6c;
+				overflow-x: hidden;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			#main {
+				width: 100%;
+				overflow-x: hidden;
+			}
+			
+			.head_nav {
+				width: 220px;
+				z-index: 2001;
+				position: absolute;
+				background-color: transparent;
+				border-color: #2f4050;
+			}
+			
+			.head_nav>li {
+				position: relative;
+				display: block;
+			}
+			
+			#side_menu {
+				padding-left: 0;
+				margin-bottom: 0;
+				list-style: none;
+			}
+			
+			#side_menu:before {
+				display: table;
+				content: " ";
+			}
+			
+			#side_menu:after {
+				clear: both;
+			}
+			
+			.dropdown {
+				position: relative;
+			}
+			
+			.img-circle {
+				border-radius: 50%;
+				padding: 0px 8px 0px 8px;
+			}
+			
+			.clear {
+				display: block;
+				overflow: hidden;
+				margin-top: 7px;
+			}
+			
+			.caret {
+				display: inline-block;
+				width: 0;
+				height: 0;
+				margin-left: 2px;
+				vertical-align: middle;
+				border-top: 4px dashed;
+				border-right: 4px solid transparent;
+				border-left: 4px solid transparent;
+			}
+			
+			.header_ul li{
+				margin-bottom: 10px;
+			}
+			
+			.header_ul li b{
+				color: #999;
+				margin-left: 5px;
+			}
+			
+			.header_ul li span{
+				margin-right: 20px;
+			}
+			
+			.header_ul li i{
+				color: #999;
+				margin-left: 20px;
+			}
+			
+			.s-h {
+				margin-top: 5px;
+				font-weight: 600;
+				color: #DFE4ED;
+				margin-right: 10px;
+			}
+			
+			.text-menu {
+				color: #8095a8;
+			}
+			
+			b {
+				font-weight: 700;
+			}
+			
+			.nav {
+				width: 200px;
+				font-size: 12px;
+				background: #293846;
+				overflow: hidden;
+			}
+			
+			.nav li {
+				line-height: 24px;
+				float: left;
+				padding: 7px 10px 7px 10px;
+				padding-left: 30px;
+			}
+			
+			.nav h2 {
+				float: left;
+				cursor: pointer;
+			}
+			
+			.nav .active span {
+				color: #fff!important;
+			}
+			
+			.nav h2 span {
+				padding-left: 30px;
+				font-size: 14px;
+				color: #a7b1c2;
+				font-weight: bold;
+			}
+			
+			.nav h2 span:hover {
+				color: #fff;
+			}
+			
+			.nav ul {
+				width: 200px;
+				height: 0px;
+				display: none;
+				overflow: hidden;
+			}
+			
+			.nav ul li a {
+				display: block;
+				float: left;
+				padding-left: 40px;
+				background: url(images/nav2.gif) no-repeat 20px center;
+				color: #6b7f97;
+				text-decoration: none;
+			}
+			
+			.nav ul li a:hover {
+				text-decoration: underline;
+			}
+			
+			.active2 {
+				border-left: 4px solid #19aa8d;
+				background: #293846;
+			}
+			
+			.fa {
+				display: inline-block;
+				font: normal normal normal 14px/1 FontAwesome;
+				font-size: inherit;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				transform: translate(0, 0);
+			}
+			
+			.active1 {
+				color: #a7b1c2;
+				font-weight: 600;
+				padding: 14px 20px 14px 25px;
+				width: 100%;
+				height: 50px;
+				display: block;
+			}
+			
+			.nav-label {
+				font-weight: 600;
+				color: #fff;
+			}
+			
+			.fa:before {
+				content: "\f044";
+			}
+			
+			.ul_nav {
+				padding-left: 0;
+				margin-bottom: 0;
+				list-style: none;
+			}
+			
+			.mima{
+				position: absolute;
+				top: 10px;
+				left: 20px;
+			}
+			
+			.mima a:hover{
+				text-decoration: underline;
+			}
+			
+			/*
+			 * 修改密码
+			 */
+			
+			.mima_span sup{
+			    color: red;
+			    margin: -0.2em 0em 0em 0.2em;
+			    font-size: 1.1em;
+			}
+			
+			#mima_xiugai{
+				padding: 6px 12px;
+			    color: #fff;
+			    font-weight: 600;
+			    margin: 1px;
+			    background: rgb(26,179,148);
+			    border: none;
+			    margin-bottom: 5px;
+			    border-radius: 4px;
+			}
+			
+			#mima_xiugai:hover{
+				opacity: 0.9;
+			}
+			
+			/*
+			 * 右侧布局
+			 */
+			
+			#page_wrapper {
+				margin: 0 0 0 220px;
+				min-height: 1200px;
+				padding: 0 15px;
+				position: relative!important;
+				background: #fff;
+			}
+			
+			.border_bottom {
+				border-bottom: 1px solid #e7eaec !important;
+			}
+			
+			.navigation {
+				background: #f3f3f4;
+				z-index: 1000;
+				position: relative;
+				min-height: 50px;
+			}
+			
+			.youce {
+				float: right;
+				margin-right: 15px;
+			}
+			
+			.youce li a {
+				padding: 15px 10px;
+				min-height: 40px;
+				display: block;
+			}
+			
+			.youce li {
+				display: inline-block;
+			}
+			
+			.login_right {
+				color: #999c9e;
+				font-weight: 600;
+			}
+			
+			.border_content {
+				padding: 20px 10px 40px;
+			}
+			
+			.low {
+				margin: 0 -15px;
+			}
+			
+			.col {
+				width: 100%;
+				position: relative;
+				min-height: 1px;
+				padding-right: 15px;
+				padding-left: 15px;
+			}
+			
+			.box_title {
+				background-color: #ffffff;
+				border-color: #e7eaec;
+				border-image: none;
+				border-style: solid solid none;
+				border-width: 4px 0px 0;
+				color: inherit;
+				margin-bottom: 0;
+				padding: 14px 15px 7px;
+				min-height: 48px;
+			}
+			
+			.box_content {
+				background-color: #ffffff;
+				color: inherit;
+				padding: 15px 20px 20px 20px;
+				border-color: #e7eaec;
+				border-image: none;
+				border-style: solid solid none;
+				border-width: 1px 0px;
+			}
+			
+			#add {
+				background: url(images/add.jpg) no-repeat center center;
+				width: 69px;
+				height: 34px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			#delete {
+				background: url(images/delete.jpg) no-repeat center center;
+				width: 69px;
+				height: 34px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			#add:hover,
+			#delete:hover {
+				opacity: 0.95;
+			}
+			
+			.anniu {
+				width: 33.333%;
+				float: left;
+				margin-left: 10px;
+			}
+			
+			#sou {
+				width: 180px;
+				z-index: 2;
+				margin-bottom: 0px;
+				background-color: #ffffff;
+				border: 1px solid #cccccc;
+				padding: 5px;
+				color: #666;
+				border-radius: 4px;
+				vertical-align: middle;
+			}
+			
+			.sou_button {
+				background: url(images/sousuo.jpg) no-repeat center center;
+				border: none;
+				height: 32px;
+				width: 44px;
+				vertical-align: middle;
+				border-radius: 0px 6px 6px 0px;
+			}
+			
+			.sou_button:hover {
+				opacity: 0.8;
+			}
+			
+			.ding {
+				margin-top: -10px;
+				margin-left: -4px;
+			}
+			/*
+			 * shiti.php页面 
+			 */
+			
+			.re_teacher_page {
+				padding-top: 15px;
+				float: right;
+			}
+			
+			.table {
+				border: 1px solid #EBEBEB;
+				font-size: 16px;
+				margin-bottom: 20px;
+				width: 100%;
+			}
+			
+			.table>thead>tr>th {
+				border-bottom: 1px solid #DDDDDD;
+			}
+			
+			.table tr th:nth-child(2),
+			.table td:nth-child(2) {
+				width: 10%;
+			}
+			
+			.table tr th:nth-child(3),
+			.table td:nth-child(3) {
+				width: 17%;
+			}
+			
+			.table tr th:nth-child(4),
+			.table td:nth-child(4) {
+				width: 29%;
+			}
+			
+			.table tr th:nth-child(5),
+			.table td:nth-child(5) {
+				width: 16%;
+			}
+			
+			.table tr th:nth-child(6),
+			.table td:nth-child(6) {
+				width: 15%;
+			}
+			
+			tr {
+				display: table-row;
+				vertical-align: inherit;
+				border-color: inherit;
+			}
+			
+			tr:hover {
+				background: #f5f5f6;
+			}
+			
+			td,
+			th {
+				padding: 8px;
+				text-align: left;
+				border-left: 1px solid #EBEBEB;
+			}
+			
+			td a {
+				color: #1383EB;
+			}
+			
+			td a:hover {
+				color: palevioletred;
+			}
+			
+			table {
+				border-spacing: 0;
+				border-collapse: collapse;
+			}
+			
+			/*
+			 * 粉丝排名
+			 */
+			.table__ranking_fen {
+				border: 1px solid #EBEBEB;
+				font-size: 16px;
+				margin-bottom: 20px;
+				width: 100%;
+			}
+			
+			.table>thead>tr>th {
+				border-bottom: 1px solid #DDDDDD;
+			}
+			
+			/*
+			 * 增加卷子内容
+			 */
+			
+			.juanzi{
+				width: 650px;
+				margin: 0 auto;
+				padding: 10px;
+			}
+			
+			/*
+			 * 更新和增加试题页面
+			 */
+			
+			.tou ul li{
+				float: left;
+				width: 50px;
+				height: 50px;
+				border: 1px solid #999;
+				text-align: center;
+				line-height: 50px;
+				font-size: 12px;
+			}
+			
+			.tou ul li:hover{
+				opacity: 0.8;
+				text-decoration: underline;
+			}
+			
+			.juanzi_sm{
+			    text-align: right;
+			    margin-bottom: 0px;
+			    padding: 8px 10px 0px 10px;
+			    width: 15%;
+			    float: left;
+			    position: relative;
+			    min-height: 1px;
+			    display: inline-block;
+			    max-width: 100%;
+			    font-weight: 700;
+			}
+			
+			.tou ul:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			
+			.zhu{
+				padding: 10px;
+				margin-top: 30px;
+			}
+			
+			div .form_group:before {
+				display: table;
+				content: " ";
+			}
+			
+			.juanzi h4{
+				padding: 6px 0px;
+			}
+			
+			.juanzi span{
+				margin-left: 20px;
+			}
+			
+			:after {
+				box-sizing: border-box;
+			}
+			
+			div .form_group:after {
+				display: table;
+				content: " ";
+			}
+			
+			div .form_group:after {
+				clear: both;
+			}
+			
+			.shiti_top {
+				margin-top: 15px;
+			}
+			
+			.form_group {
+				margin-right: -15px;
+				margin-left: -15px;
+				margin-bottom: 15px;
+			}
+			
+			.clo_sm {
+				text-align: right;
+				margin-bottom: 0px;
+				padding: 8px 10px 0px 10px;
+				width: 25%;
+				float: left;
+				position: relative;
+				min-height: 1px;
+				display: inline-block;
+				max-width: 100%;
+				font-weight: 700;
+			}
+			
+			.clo_sm_2 {
+				width: 75%;
+				float: left;
+				position: relative;
+				padding: 0 15px;
+				min-height: 1px;
+				color: inherit;
+			}
+			
+			.clo_sm_3{
+				margin-left: 45%;
+				width: 33.33333333%;
+				float: left;
+				position: relative; 
+			    min-height: 1px;
+			    padding-right: 15px;
+			    padding-left: 15px;
+			}
+			
+			.shiti_tijiao{
+				padding: 6px 12px;
+				color: #fff;
+				font-weight: 600;
+				margin: 1px;
+				background: rgb(26,179,148);
+				border: none;
+				margin-bottom: 5px;
+				border-radius: 4px;
+			}
+			
+			.shiti_tijiao:hover{
+				opacity: 0.9;
+			}
+			
+			button,
+			input,
+			select,
+			textarea {
+				font-family: inherit;
+				font-size: inherit;
+				line-height: inherit;
+			}
+			
+			select {
+				height: auto;
+				line-height: none;
+				padding: 7px 10px;
+				border: 1px solid #ccc;
+			}
+			
+			textarea,
+			input[type="text"],
+			input[type="password"],
+			input[type="datetime"],
+			input[type="datetime-local"],
+			input[type="date"],
+			input[type="month"],
+			input[type="time"],
+			input[type="week"],
+			input[type="number"],
+			input[type="email"],
+			input[type="url"],
+			input[type="search"],
+			input[type="tel"],
+			input[type="color"],
+			.uneditable-input {
+				background-color: #ffffff;
+				border: 1px solid #cccccc;
+				-moz-transition: border-color .25s linear, color .25s linear, background-color .25s linear;
+				-webkit-transition: border-color .25s linear, color .25s linear, background-color .25s linear;
+				transition: border-color .25s linear, color .25s linear, background-color .25s linear;
+			}
+			
+			select,
+			textarea,
+			input[type="text"],
+			input[type="password"],
+			input[type="datetime"],
+			input[type="datetime-local"],
+			input[type="date"],
+			input[type="month"],
+			input[type="time"],
+			input[type="week"],
+			input[type="number"],
+			input[type="email"],
+			input[type="url"],
+			input[type="search"],
+			input[type="tel"],
+			input[type="color"],
+			.uneditable-input {
+				display: inline-block;
+				padding: 8px;
+				margin-bottom: 10px;
+				font-size: 14px;
+				color: #555555;
+				vertical-align: middle;
+				background: #fff;
+				width: 500px;
+			}
+			
+			textarea{
+				height:150px;
+			}
+			
+			button,
+			input,
+			optgroup,
+			select,
+			textarea {
+				margin: 0;
+				font: inherit;
+				color: inherit;
+			}
+			
+			select {
+				width: 220px;
+				background-color: #ffffff;
+				border: 1px solid #cccccc;
+			}
+			
+			button,
+			select {
+				text-transform: none;
+			}
+			
+			/*
+			 * 首页面样式
+			 */
+			.clo_sm_5{
+				width: 50%;
+			    float: left;
+			    position: relative;
+			    padding: 0 15px;
+			    min-height: 1px;
+			    color: inherit;
+			    text-align: left;
+			    padding: 8px 10px 0 10px;
+			}
+			
+			/*
+			 * 个人中心页面
+			 */
+			.header{
+				padding: 10px;
+			}
+			
+			.header:after{
+				content: '';
+				display: block;
+				width: 0;
+				height: 0;
+				visibility: hidden;
+				clear: both;
+			}
+			
+			.header img{
+				float: left;
+			}
+			
+			.header ul{
+				float: left;
+				margin-left: 6%;
+			}	
+			
+			.header strong{
+				font-size: 1.3em;
+			}
+			
+			
+			.geren_main{
+				padding: 10px;
+				position: relative;
+			}
+			
+			.yincang_main{
+				position: absolute;
+				top:-8px;
+				left: 10px;
+			}		
+			
+			.geren_main h4{
+				padding: 10px;
+			}
+			
+			.yincang_main span{
+				margin-left: 20px;
+			}
+			
+			.yincang_main span b{
+				margin-right: 10px;
+			}
+			
+			.main_liuyan ul li{
+				padding: 10px;
+			}
+			
+			.main_liuyan ul li span{
+				margin-right: 30px;
+			}
+			
+			.main_liaotian ul li{
+				padding: 10px;
+			}
+			
+			.main_liaotian ul li span{
+				margin-right: 30px;
+			}
+			
+			/*
+			 * 页脚CSS样式
+			 */
+			
+			.footer {
+				text-align: center;
+				font-size: 12px;
+				line-height: 20px;
+			}
+			/*
+			 * 分页操作
+			 */
+			
+			#page a {
+				width: auto;
+				min-width: 30px;
+				padding-left: 4px;
+				padding-right: 2px;
+				height: 30px;
+				overflow: hidden;
+				line-height: 30px;
+				text-align: center;
+				color: #666;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			#page a:hover {
+				color: #1383EB;
+				border-bottom: 1px solid #2E8DED;
+			}
+			
+			.page_teacher {
+				background: #2E8DED;
+				color: #fff!important;
+			}
+		</style>
+	</head>

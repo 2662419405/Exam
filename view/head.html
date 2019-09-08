@@ -1,0 +1,185 @@
+<script src="js/jquery.js"></script>
+<div class="nav" id="nnn">
+	<div class="width_1200">
+		<ul>
+			<li>
+				<a href="index.php">题库大厅</a>
+			</li>
+			<li style="padding-left: 20px">
+				<form method="get" action="search.php">
+					<input class="sea" name="keyword" placeholder="  大千题库，快来学习">
+					<input type="submit" value="搜索" class="sousuo" id="sousuo"/>
+				</form>
+			</li>
+			<li style="padding-left: 10px">
+				<a href="test.php">开始做题</a>
+			</li>
+			<li>
+				<a href="wrong_text.php">错题本</a>
+			</li>
+
+		</ul>
+		<ol>
+			<li style="padding: 0 10px;">
+				<a href="setting.php">
+					<?php echo $_SESSION['user']['username'] ?>
+				</a>
+			</li>
+			<li class="li_message">
+				&nbsp;
+				<dl class="menu">
+					<dd>
+						<a href="homepage.php">个人中心</a>
+					</dd>
+					<dd>
+						<a href="">我的消息</a>
+					</dd>
+				</dl>
+			</li>
+			<li class="li_set">
+				&nbsp;
+				<dl class="menu">
+					<dd>
+						<a href="#" id="A1">切换账号</a>
+					</dd>
+					<dd>
+						<a href="logout.php">退出</a>
+					</dd>
+				</dl>
+			</li>
+		</ol>
+	</div>
+</div>
+<div id="mask"></div>
+<div id="box">
+	<a href="javascript:;" id="close">×</a>
+	<form action="../exam/qiehuan.php" method="post">
+		<div class="head_nav_div">
+			切换账号
+		</div>
+		<div class="head_div">
+			<label class="inpL" id="inp1" title="请输入用户名">
+				<span style="display: block;">请输入你的账户信息</span><input type="text" name="username" style="display: none;"/>
+			</label>
+		</div>
+		<div class="head_div">
+			<label class="inpL" id="inp2" title="请输入密码">
+				<span style="display: block;">请输入你的密码信息</span><input type="password" name="password" style="display: none;"/>
+			</label>
+		</div>
+		<div class="head_submit">
+			<input type="submit" value="登录"/>
+			<input type="reset"  value="重置"/>
+		</div>
+	</form>
+</div>
+<script>
+	$(function(){
+		$('.inpL').click(function(){
+			
+			$(this).children('span').css('display','none')
+			$(this).children('input').css('display','block')
+			
+			$('.inpL').removeClass('tianjia_bg')
+			//添加
+			$(this).addClass('tianjia_bg')			
+		})
+	})
+</script>
+<script>
+	
+	var oBtn = document.getElementById('A1');
+	var oMask = document.getElementById('mask');
+	var oBox = document.getElementById('box');
+	var oClose = document.getElementById('close');
+	
+	oClose.onclick = function() {
+		
+		oMask.style.display = 'none';
+		oBox.style.display = 'none';
+		
+	}
+	
+	oBtn.onclick = function() {
+		
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+		
+		//遮罩层
+		oMask.style.display = 'block';
+		
+		oMask.style.width = Math.max( document.body.offsetWidth, document.documentElement.clientWidth ) + 'px';
+		oMask.style.height = Math.max( document.body.offsetHeight, document.documentElement.clientHeight ) + 'px';
+		
+		//弹出层
+		oBox.style.display = 'block';
+		oBox.style.left = ( document.documentElement.clientWidth - oBox.offsetWidth ) / 2 + scrollLeft + 'px';
+		oBox.style.top = ( document.documentElement.clientHeight - oBox.offsetHeight ) / 2 + scrollTop + 'px';
+		
+	}
+	
+	window.onscroll = function() {		
+		
+		//主页面的切换账号		
+		if (oBox.style.display == 'none') return ;
+		
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+		
+		oBox.style.left = ( document.documentElement.clientWidth - oBox.offsetWidth ) / 2 + scrollLeft + 'px';
+		oBox.style.top = ( document.documentElement.clientHeight - oBox.offsetHeight ) / 2 + scrollTop + 'px';
+		
+	}
+	
+	window.onresize = function() {
+		
+		if (oMask.style.display == 'none') return ;
+		
+		oMask.style.width = Math.max( document.body.offsetWidth, document.documentElement.clientWidth ) + 'px';
+		oMask.style.height = Math.max( document.body.offsetHeight, document.documentElement.clientHeight ) + 'px';
+		
+		if (oBox.style.display == 'none') return ;
+		
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+		
+		oBox.style.left = ( document.documentElement.clientWidth - oBox.offsetWidth ) / 2 + scrollLeft + 'px';
+		oBox.style.top = ( document.documentElement.clientHeight - oBox.offsetHeight ) / 2 + scrollTop + 'px';
+		
+	}
+</script>
+<div id="div1111">
+	<ul>
+		<li><a href="test.php">开始考试</a></li>
+		<li><a href="tiku.php">题库练习</a></li>
+		<li><a href="homepage.php">个人中心</a></li>
+		<li><a href="geren.php">讨论专区</a></li>
+		<li><a href="setting.php">个人设置</a></li>
+		<li><a href="wrong_text.php">错题本</a></li>
+		<li><a href="rankling_list.php">排行榜</a></li>
+		<li><a href="re_teacher.php">最新成员</a></li>
+	</ul>
+</div>
+<script>
+	
+	//鼠标右键功能
+	var oDiv1 = document.getElementById('div1111');
+	
+	nnn.oncontextmenu = function(ev) {
+		var ev = ev || event;
+		
+		if(box.style.display=='block'){
+			return false;
+		}
+		oDiv1.style.display = 'block';
+		oDiv1.style.left = ev.clientX + 'px';
+		oDiv1.style.top = ev.clientY + 'px';
+		return false;
+		
+	}
+	
+	document.onclick = function() {
+		oDiv1.style.display = 'none';
+	}
+	
+</script>
